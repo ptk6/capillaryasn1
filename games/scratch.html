@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scratch Card</title>
+    <style>
+      /* CSS styles for the scratch card game page */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #scratchCard {
+        width: 300px;
+        height: 150px;
+        margin: 0 auto;
+        background-color: #ccc;
+        background-image: url("scratch_pattern.png"); /* Replace with the path to your scratch pattern image */
+
+        background-size: cover;
+        cursor: pointer;
+      }
+      #scratchText {
+        text-align: center;
+        font-size: 24px;
+        font-weight: bold;
+        color: #000;
+        padding-top: 60px;
+      }
+      #scratchCard.scratched {
+        background-color: #f4f4f4;
+      }
+      #scratchCard.scratched #scratchText {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Scratch Card</h1>
+    <div id="scratchCard">
+      <div id="scratchText">Scratch Here</div>
+    </div>
+    <div id="rewardDisplay"></div>
+
+    <script>
+      // JavaScript code to handle scratch card game
+      var scratchCard = document.getElementById("scratchCard");
+      var playCount = 0;
+      function disableSpinButton() {
+        spinButton.disabled = true;
+      }
+      // Add event listener to the scratch card
+      scratchCard.addEventListener("mousedown", startScratching);
+
+      function startScratching() {
+        if (playCount >= 3) {
+          alert(
+            "Sorry, you have reached the maximum number of plays for today."
+          );
+          // playCount = 0;
+          return;
+        }
+        scratchCard.classList.add("scratched");
+        // Generate a random reward for the user (example)
+        var rewards = ["1000 Chips", "10% off on Amazon", "100 off on Myntra"];
+        var randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+
+        // Display the reward to the user
+        alert("Congratulations! You won: " + randomReward);
+        playCount++;
+        if (playCount >= 3) {
+          disableSpinButton();
+          alert(
+            "Sorry, you have reached the maximum number of plays for today."
+          );
+          // playCount = 0;
+        }
+      }
+      function handleScratchResult() {
+        // Generate a random reward for the user (example)
+        var rewards = ["Free Chips", "10% off on Amazon", "100 off on Myntra"];
+        var randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+
+        // Display the reward to the user
+        displayReward(randomReward);
+      }
+
+      function displayReward(reward) {
+        var rewardDisplay = document.getElementById("rewardDisplay");
+        rewardDisplay.innerText = "Congratulations! You won: " + reward;
+      }
+    </script>
+  </body>
+</html>

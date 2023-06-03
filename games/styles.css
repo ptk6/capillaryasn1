@@ -1,0 +1,31 @@
+/* CSS styles for the game selection page */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  justify-content: center;
+  display: grid;
+}
+h1 {
+  text-align: center;
+  color: burlywood;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  display: grid;
+}
+li {
+  margin-bottom: 10px;
+}
+button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: white;
+  cursor: pointer;
+}
+button:hover {
+  background-color: #45a049;
+}

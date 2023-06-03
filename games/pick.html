@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pick and Win</title>
+    <style>
+      /* CSS styles for the pick and win game page */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+      }
+      h1 {
+        text-align: center;
+      }
+      #pickOptions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .pickOption {
+        width: 150px;
+        height: 150px;
+        background-color: #ccc;
+        margin: 10px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .pickOption:hover {
+        background-color: #f4f4f4;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Pick and Win</h1>
+    <div id="pickOptions">
+      <div class="pickOption">Option 1</div>
+      <div class="pickOption">Option 2</div>
+      <div class="pickOption">Option 3</div>
+      <div class="pickOption">Option 4</div>
+      <div id="rewardDisplay"></div>
+    </div>
+
+    <script>
+      var pickOptions = document.querySelectorAll(".pickOption");
+      var playCount = 0;
+
+      // Add event listener to each pick option
+      pickOptions.forEach(function (option) {
+        option.addEventListener("click", handlePickOption);
+      });
+
+      function disableSpinButton() {
+        spinButton.disabled = true;
+      }
+
+      function handlePickOption(event) {
+        if (playCount >= 3) {
+          alert(
+            "Sorry, you have reached the maximum number of plays for today."
+          );
+          // playCount = 0;
+          return;
+        }
+
+        var selectedOption = event.target.textContent;
+
+        // Generate a random reward for the user (example)
+        var rewards = [
+          "Free Chips",
+          "10% off on Amazon",
+          "100 off on Myntra",
+          "150 off on Flipkart",
+        ];
+        var randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+
+        // Display the selected option and the reward to the user
+        alert(
+          "You picked: " +
+            selectedOption +
+            "\nCongratulations! You won: " +
+            randomReward
+        );
+
+        playCount++;
+        console.log(playCount);
+        if (playCount >= 3) {
+          disableSpinButton();
+          alert(
+            "Sorry, you have reached the maximum number of plays for today."
+          );
+          // playCount = 0;
+        }
+      }
+
+      function pickAndWin() {
+        // ...
+
+        // Call a function to handle the result and reward the user
+        var randomReward = pickRandomReward();
+        displayReward(randomReward);
+
+        // ...
+      }
+
+      function pickRandomReward() {
+        // Generate a random reward for the user (example)
+        var rewards = ["Free Chips", "10% off on Amazon", "100 off on Myntra"];
+        var randomReward = rewards[Math.floor(Math.random() * rewards.length)];
+
+        return randomReward;
+      }
+
+      function displayReward(reward) {
+        var rewardDisplay = document.getElementById("rewardDisplay");
+        rewardDisplay.innerText = "Congratulations! You won: " + reward;
+      }
+    </script>
+  </body>
+</html>

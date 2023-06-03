@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Game Selection</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Game Selection</h1>
+    <ul>
+      <li>
+        <button class="game-button" id="spin">Spin the Wheel</button>
+      </li>
+      <li>
+        <button class="game-button" id="scratch">Scratch Card</button>
+      </li>
+      <li><button class="game-button" id="pick">Pick and Win</button></li>
+    </ul>
+
+    <script>
+      const buttons = document.querySelectorAll(".game-button");
+      buttons.forEach((button) => {
+        button.addEventListener("click", (event) => {
+          const gameId = event.target.id;
+          window.location.href = `${gameId}.html`;
+        });
+      });
+    </script>
+  </body>
+</html>
